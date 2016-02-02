@@ -9,7 +9,15 @@
 // Use the twitter package inside the response to also return a random tweet!
 
 var http = require("http");
-var twitter = require("twitter");
+var Twitter = require("twitter");
+var keys = require("./keys.js");
+//grabs twitter api keys from keys.js file
+var client = new Twitter({
+  consumer_key: keys.twitterKeys.consumer_key,
+  consumer_secret: keys.twitterKeys.consumer_secret,
+  access_token_key: keys.twitterKeys.access_token_key,
+  access_token_secret: keys.twitterKeys.access_token_secret
+});
 var PORT = 7000;
 var goodThings = ["You're awesome", "You have great taste", "You look fantastic today", "You are an expert developer"]
 var badThings =["You suck bro", "You're having a bad hair day", "That dress does make you look fat", "You're a bad person and you should feel bad"]
@@ -39,4 +47,8 @@ var server = http.createServer(handleRequest);
 
 server.listen(PORT2, function() {
   console.log("Server is listening at http://localhost:%s", PORT2);
+});
+
+client.get('search/tweets', {q: 'node.js'}, function(error, tweets, response){
+   console.log(tweets);
 });
