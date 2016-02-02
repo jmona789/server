@@ -9,6 +9,7 @@
 // Use the twitter package inside the response to also return a random tweet!
 
 var http = require("http");
+var twitter = require("twitter");
 var PORT = 7000;
 var goodThings = ["You're awesome", "You have great taste", "You look fantastic today", "You are an expert developer"]
 var badThings =["You suck bro", "You're having a bad hair day", "That dress does make you look fat", "You're a bad person and you should feel bad"]
